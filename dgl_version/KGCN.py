@@ -10,7 +10,7 @@ class KGCN( nn.Module ):
     def __init__( self, n_users, n_entitys, n_relations,
                   e_dim,  adj_entity, adj_relation, n_neighbors,
                   aggregator_method = 'sum',
-                  act_method = F.relu, drop_rate=0.5):
+                  act_method = F.relu, drop_rate=0.5, n_layers=1):
         super( KGCN, self ).__init__()
 
         self.e_dim = e_dim  # 特征向量维度
@@ -31,18 +31,19 @@ class KGCN( nn.Module ):
 
         self.act = act_method #激活函数
         self.drop_rate = drop_rate #drop out 的比率
+        self.n_layers = n_layers
 
     def forward(self, users, items, is_evaluate = False):
         neighbor_entitys, neighbor_relations = self.get_neighbors( items )
         user_embeddings = self.user_embedding( users)
         item_embeddings = self.entity_embedding( items )
 
-        #得到v波浪线
-        neighbor_vectors = self.__get_neighbor_vectors( neighbor_entitys, neighbor_relations, user_embeddings )
+        # 多层消息传递
+        for _ in range(self.n_layers):
+            neighbor_vectors = self.__get_neighbor_vectors( neighbor_entitys, neighbor_relations, user_embeddings )
+            item_embeddings = self.aggregator( item_embeddings, neighbor_vectors, is_evaluate)
 
-        out_item_embeddings = self.aggregator( item_embeddings, neighbor_vectors,is_evaluate)
-
-        out = torch.sigmoid( torch.sum( user_embeddings * out_item_embeddings, axis = -1 ) )
+        out = torch.sigmoid( torch.sum( user_embeddings * item_embeddings, axis = -1 ) )
 
         return out
 
@@ -102,7 +103,17 @@ def do_evaluate( model, testSet ):
         p = precision_score(y_true = labels, y_pred = predictions)
         r = recall_score(y_true = labels, y_pred = predictions)
         acc = accuracy_score(labels, y_pred = predictions)
-        return p,r,acc
+        # 计算F1值
+        f1 = 2 * (p * r) / (p + r) if (p + r) > 0 else 0
+        return p, r, acc, f1
+
+# 预测函数
+def predict(model, user_ids, item_ids):
+    model.eval()
+    with torch.no_grad():
+        logits = model(torch.LongTensor(user_ids), torch.LongTensor(item_ids), True)
+        predictions = [1 if i >= 0.5 else 0 for i in logits]
+    return predictions
 
 def train( epochs, batchSize, lr,
            n_users, n_entitys, n_relations,
@@ -110,7 +121,7 @@ def train( epochs, batchSize, lr,
            train_set, test_set,
            n_neighbors,
            aggregator_method = 'sum',
-           act_method = F.relu, drop_rate = 0.5, weight_decay=5e-4
+           act_method = F.relu, drop_rate = 0.5, weight_decay=5e-4, n_layers=1
          ):
 
     model = KGCN( n_users, n_entitys, n_relations,
@@ -118,7 +129,7 @@ def train( epochs, batchSize, lr,
                   n_neighbors = n_neighbors,
                   aggregator_method = aggregator_method,
                   act_method = act_method,
-                  drop_rate = drop_rate )
+                  drop_rate = drop_rate, n_layers=n_layers )
     optimizer = torch.optim.Adam( model.parameters(), lr = lr, weight_decay = weight_decay )
     loss_fcn = nn.BCELoss()
     dataIter = dataloader4kg.DataIter()
@@ -136,26 +147,46 @@ def train( epochs, batchSize, lr,
             loss.backward()
             optimizer.step()
             total_loss += loss.item()
-        p, r, acc = do_evaluate(model,test_set)
-        print("Epoch {} | Loss {:.4f} | Precision {:.4f} | Recall {:.4f} | Accuracy {:.4f} "
-                  .format(epoch, total_loss/(len(train_set)//batchSize), p, r, acc))
-
-
+        p, r, acc, f1 = do_evaluate(model,test_set) # 修改这里以接收F1值
+        print("Epoch {} | Loss {:.4f} | Precision {:.4f} | Recall {:.4f} | Accuracy {:.4f} | F1 {:.4f}"
+              .format(epoch, total_loss/(len(train_set)//batchSize), p, r, acc, f1))
+    
+        # 保存模型
+        if epoch == epochs - 1:
+            torch.save(model.state_dict(), 'model/KGCN_model.pth')
 
 if __name__ == '__main__':
     n_neighbors = 10
+    n_layers = 2 # 设置消息传递次数
 
     users, items, train_set, test_set = dataloader4kg.readRecData(dataloader4kg.Ml_100K.RATING)
     entitys, relations, kgTriples = dataloader4kg.readKgData(dataloader4kg.Ml_100K.KG)
     adj_kg = dataloader4kg.construct_kg(kgTriples)
     adj_entity, adj_relation = dataloader4kg.construct_adj(n_neighbors, adj_kg, len(entitys))
+    if len(train_set) == 0:
+        raise ValueError("训练数据集为空，请检查数据加载部分")
 
-    train( epochs = 10, batchSize = 1024, lr = 0.01,
+    # 训练模型
+    train( epochs = 10, batchSize = 64, lr = 0.01,
+
            n_users = max( users ) + 1, n_entitys = max( entitys ) + 1,
            n_relations = max( relations ) + 1, adj_entity = adj_entity,
            adj_relation = adj_relation, train_set = train_set,
            test_set = test_set, n_neighbors = n_neighbors,
-           aggregator_method = 'sum', act_method = F.relu, drop_rate = 0.5 )
+           aggregator_method = 'sum', act_method = F.relu, drop_rate = 0.5, n_layers=n_layers )
 
 
+    # 加载训练好的模型
+    model = KGCN( n_users = max( users ) + 1, n_entitys = max( entitys ) + 1,
+                  n_relations = max( relations ) + 1, e_dim = 10,
+                  adj_entity = adj_entity, adj_relation = adj_relation,
+                  n_neighbors = n_neighbors, aggregator_method = 'sum',
+                  act_method = F.relu, drop_rate = 0.5, n_layers=n_layers )
+    model.load_state_dict(torch.load('model/KGCN_model.pth'))
+    model.eval()
 
+    # 示例预测
+    user_ids = [119, 172, 445, 13, 6, 6]  # 示例用户ID
+    item_ids = [327, 445, 456, 331, 7, 9]  # 示例物品ID
+    predictions = predict(model, user_ids, item_ids)
+    print("Predictions:", predictions)
