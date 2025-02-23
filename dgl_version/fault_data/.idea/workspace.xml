@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="d4935d7b-cb70-4ddf-b17d-3825f3a94717" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../gnn_data/data/乱序三元组.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gnn_data/data/打乱后的训练集.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gnn_data/data/故障信息.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../output/测试集.xlsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../dataloader4kg.py" beforeDir="false" afterPath="$PROJECT_DIR$/../dataloader4kg.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../evaluation.py" beforeDir="false" afterPath="$PROJECT_DIR$/../evaluation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gnn_data/Cause-Suggestion.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/../gnn_data/data/Cause-Suggestion.xlsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gnn_data/Description-Cause.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/../gnn_data/data/Description-Cause.xlsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gnn_data/FaultKnowledge.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/../gnn_data/data/FaultKnowledge.xlsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gnn_data/copy/故障信息.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/../gnn_data/copy/故障信息.xlsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gnn_data/data_opt.py" beforeDir="false" afterPath="$PROJECT_DIR$/../gnn_data/data_opt.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gnn_data/duplicated_kg.tsv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gnn_data/duplicated_rating.tsv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gnn_data/kg_index.tsv" beforeDir="false" afterPath="$PROJECT_DIR$/kg_index.tsv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gnn_data/kg_index_0.tsv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gnn_data/rating_index.tsv" beforeDir="false" afterPath="$PROJECT_DIR$/rating_index.tsv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gnn_data/rating_index_0.tsv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gnn_data/xlsx2csv.py" beforeDir="false" afterPath="$PROJECT_DIR$/../gnn_data/xlsx2csv.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gnn_data/~$故障信息.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gnn_data/三元组.tsv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gnn_data/三元组.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/../gnn_data/data/三元组.xlsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gnn_data/乱序三元组.tsv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gnn_data/乱序三元组.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gnn_data/打乱后的训练集.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gnn_data/故障信息.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gnn_data/故障信息.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gnn_data/故障实体.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/../gnn_data/data/故障实体.xlsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gnn_data/训练集.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/../gnn_data/data/训练集.xlsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gnn_data/训练集1.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/../gnn_data/data/训练集1.xlsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gnn_data/训练集2.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/../gnn_data/data/训练集2.xlsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ml-100k/kg_index.tsv" beforeDir="false" afterPath="$PROJECT_DIR$/../gnn_data/data/kg_index.tsv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ml-100k/rating_index.tsv" beforeDir="false" afterPath="$PROJECT_DIR$/../gnn_data/data/rating_index.tsv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ml-100k/rating_index_5.tsv" beforeDir="false" afterPath="$PROJECT_DIR$/rating_index_5.tsv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../model/KGCN_model.pth" beforeDir="false" afterPath="$PROJECT_DIR$/../model/KGCN_model.pth" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../train.py" beforeDir="false" afterPath="$PROJECT_DIR$/../train.py" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="ProjectId" id="2tQr6CSJJcLIUvkXyaXS0crzNZ0" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "D:/code/gnn/dgl_version/fault_data"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="d4935d7b-cb70-4ddf-b17d-3825f3a94717" name="Changes" comment="" />
+      <created>1740294961552</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1740294961552</updated>
+    </task>
+    <servers />
+  </component>
+</project>

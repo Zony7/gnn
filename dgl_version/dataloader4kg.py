@@ -14,7 +14,7 @@ def readTriple(path,sep=None):
             yield lines
 
 class Ml_100K():
-    __BASE = os.path.join(os.path.split(os.path.realpath(__file__))[0], 'ml-100k')
+    __BASE = os.path.join(os.path.split(os.path.realpath(__file__))[0], 'fault_data')
     KG=os.path.join(__BASE,'kg_index.tsv')
     RATING = os.path.join(__BASE,'rating_index.tsv')
     RATING5 = os.path.join(__BASE, 'rating_index_5.tsv')
