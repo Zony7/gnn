@@ -1,0 +1,188 @@
+        self.max_seq_len = 512
+        self.epochs = 2
+        self.train_batch_size = 1
+        self.dev_batch_size = 1
+        self.bert_learning_rate = 1e-5
+        self.crf_learning_rate = 1e-3
+        self.adam_epsilon = 1e-8
+        self.weight_decay = 0.02
+        self.warmup_proportion = 0.1
+        self.save_step = 500
+【train】2/2 4774/4774 loss:66.60015869140625
+Total training time: 2848.2302646636963 seconds
+E:/lzy/BERT-BILSTM-CRF/main.py:86: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  self.model.load_state_dict(torch.load(os.path.join(self.output_dir, "pytorch_model_ner.bin")))
+100%|██████████| 299/299 [01:27<00:00,  3.40it/s]
+           precision    recall  f1-score   support
+  I-Cause     0.8760    0.9487    0.9109      5672
+B-FaultCategory     0.8485    0.3969    0.5408       635
+I-Description     0.8823    0.9532    0.9164      6411
+B-Description     0.8595    0.4092    0.5545       628
+  B-Cause     0.8956    0.4143    0.5666       642
+I-FaultCategory     0.8723    0.8176    0.8440      1880
+I-FaultDevice     0.8868    0.6788    0.7690      1177
+I-Suggestion     0.8771    0.9629    0.9180      8158
+        O     0.8934    0.9380    0.9152      5094
+B-Suggestion     0.8788    0.4286    0.5762       609
+B-FaultDevice     0.9057    0.4360    0.5886       617
+avg/total     0.8807    0.8808    0.8709     31523
+
+
+
+
+
+
+
+
+句子长度
+        self.max_seq_len = 128
+        self.epochs = 5
+        self.train_batch_size = 16
+        self.dev_batch_size = 16
+        self.bert_learning_rate = 1e-5
+        self.crf_learning_rate = 1e-3
+        self.adam_epsilon = 1e-8
+        self.weight_decay = 0.02
+        self.warmup_proportion = 0.1
+        self.save_step = 500
+E:/lzy/BERT-BILSTM-CRF/main.py:77: MatplotlibDeprecationWarning: Support for FigureCanvases without a required_interactive_framework attribute was deprecated in Matplotlib 3.6 and will be removed two minor releases later.
+  plt.figure(figsize=(10, 6))
+E:/lzy/BERT-BILSTM-CRF/main.py:84: MatplotlibDeprecationWarning: Support for FigureCanvases without a required_interactive_framework attribute was deprecated in Matplotlib 3.6 and will be removed two minor releases later.
+  plt.show()
+E:/lzy/BERT-BILSTM-CRF/main.py:86: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  self.model.load_state_dict(torch.load(os.path.join(self.output_dir, "pytorch_model_ner.bin")))
+100%|██████████| 19/19 [00:09<00:00,  1.98it/s]
+           precision    recall  f1-score   support
+B-Suggestion     0.8763    0.4458    0.5910       572
+I-Description     0.8822    0.9495    0.9146      5665
+  B-Cause     0.8953    0.4424    0.5922       599
+  I-Cause     0.8793    0.9527    0.9145      5481
+        O     0.8946    0.9383    0.9160      4687
+I-Suggestion     0.8762    0.9648    0.9183      7377
+B-FaultDevice     0.9098    0.4283    0.5824       565
+B-FaultCategory     0.8415    0.3899    0.5329       572
+B-Description     0.8595    0.4349    0.5775       591
+I-FaultCategory     0.8734    0.8096    0.8403      1670
+I-FaultDevice     0.8861    0.6698    0.7629      1069
+avg/total     0.8812    0.8814    0.8813     28848
+
+进程已结束，退出代码为 0
+
+！！！64
+
+        self.max_seq_len = 64
+        self.epochs = 3
+        self.train_batch_size = 16
+        self.dev_batch_size = 16
+        self.bert_learning_rate = 1e-5
+        self.crf_learning_rate = 1e-3
+        self.adam_epsilon = 1e-8
+        self.weight_decay = 0.02
+        self.warmup_proportion = 0.1
+        self.save_step = 500
+
+
+
+E:/lzy/BERT-BILSTM-CRF/main.py:77: MatplotlibDeprecationWarning: Support for FigureCanvases without a required_interactive_framework attribute was deprecated in Matplotlib 3.6 and will be removed two minor releases later.
+  plt.figure(figsize=(10, 6))
+Total training time: 94.17129397392273 seconds
+E:/lzy/BERT-BILSTM-CRF/main.py:84: MatplotlibDeprecationWarning: Support for FigureCanvases without a required_interactive_framework attribute was deprecated in Matplotlib 3.6 and will be removed two minor releases later.
+  plt.show()
+E:/lzy/BERT-BILSTM-CRF/main.py:86: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  self.model.load_state_dict(torch.load(os.path.join(self.output_dir, "pytorch_model_ner.bin")))
+100%|██████████| 19/19 [00:08<00:00,  2.27it/s]
+           precision    recall  f1-score   support
+I-Description     0.8832    0.9699    0.9246      5155
+I-FaultDevice     0.9126    0.4362    0.5903       431
+B-FaultDevice     0.9383    0.2542    0.4000       299
+  B-Cause     0.8936    0.5431    0.6756       464
+  I-Cause     0.8814    0.9681    0.9227      4485
+I-FaultCategory     0.8559    0.4691    0.6061       405
+        O     0.9011    0.9182    0.9096      2323
+I-Suggestion     0.8779    0.9573    0.9159      4117
+B-Suggestion     0.8675    0.5232    0.6527       388
+B-Description     0.8595    0.5377    0.6615       478
+B-FaultCategory     0.7959    0.1439    0.2437       271
+avg/total     0.8829    0.8833    0.8831     18816
+
+Confusion Matrix:
+        I-Description I-FaultDevice B-FaultDevice B-Cause I-Cause I-FaultCategory       O I-Suggestion B-Suggestion B-Description B-FaultCategory
+I-Description    5000       2       1       2      56       4      22      60       3       4       1
+I-FaultDevice      83     188       0       4      57       3      26      58       4       6       2
+B-FaultDevice      52       2      76       8      56       2      33      60       1       8       1
+B-Cause      61       1       1     252      68       4      20      51       3       2       1
+I-Cause      60       1       0       1    4342       5      24      45       4       3       0
+I-FaultCategory      56       0       0       3      62     190      26      61       1       6       0
+      O      72       2       0       3      60       2    2133      45       4       2       0
+I-Suggestion      82       2       0       2      59       2      20    3941       4       5       0
+B-Suggestion      54       4       1       0      43       4      19      56     203       2       2
+B-Description      64       1       1       4      68       1      20      56       3     257       3
+B-FaultCategory      77       3       1       3      55       5      24      56       4       4      39
+
+进程已结束，退出代码为 0
+
+
+！！！256
+
+           precision    recall  f1-score   support
+B-FaultCategory     0.8464    0.4000    0.5433       620
+I-Description     0.8799    0.9503    0.9138      5954
+I-FaultCategory     0.8751    0.8186    0.8459      1858
+        O     0.8936    0.9389    0.9157      5045
+B-FaultDevice     0.9078    0.4382    0.5911       607
+I-FaultDevice     0.8864    0.6793    0.7692      1160
+  I-Cause     0.8791    0.9500    0.9132      5662
+B-Description     0.8595    0.4145    0.5593       620
+  B-Cause     0.8956    0.4202    0.5720       633
+I-Suggestion     0.8769    0.9643    0.9185      8050
+B-Suggestion     0.8754    0.4333    0.5797       600
+avg/total     0.8809    0.8810    0.8809     30809
+
+Confusion Matrix:
+        B-FaultCategory I-Description I-FaultCategory       O B-FaultDevice I-FaultDevice I-Cause B-Description B-Cause I-Suggestion B-Suggestion
+B-FaultCategory     248      89      22      50       3      12      77       4       3     106       6
+I-Description       4    5658      22      66       5      12      73       4       2     104       4
+I-FaultCategory       2      63    1521      61       2      12      75       6       3     112       1
+      O       3      76      24    4737       1      10      71       2       3     113       5
+B-FaultDevice       3      60      13      60     266       6      67       8       8     115       1
+I-FaultDevice       7      93      22      55       3     788      70       6       4     108       4
+I-Cause       4      75      23      64       1       4    5379       3       1     104       4
+B-Description       5      72      17      52       3      13      81     257       4     112       4
+B-Cause       5      77      24      54       3      12      80       2     266     107       3
+I-Suggestion       7     107      21      53       2       6      78       5       3    7763       5
+B-Suggestion       5      60      29      49       4      14      68       2       0     109     260
+
+进程已结束，退出代码为 0
+
+
+
+32
+           precision    recall  f1-score   support
+I-FaultDevice     0.0000    0.0000    0.0000       122
+I-FaultCategory     0.0000    0.0000    0.0000       105
+I-Description     0.8820    0.9895    0.9327      4284
+B-Description     0.8595    0.6965    0.7695       369
+        O     0.9072    0.9219    0.9145      1294
+  I-Cause     0.8790    0.9671    0.9210      1976
+I-Suggestion     0.8843    0.7448    0.8086       431
+B-Suggestion     0.8060    0.4030    0.5373       134
+  B-Cause     0.8980    0.6728    0.7692       327
+B-FaultCategory     0.0000    0.0000    0.0000       114
+B-FaultDevice     0.0000    0.0000    0.0000       113
+avg/total     0.8404    0.8841    0.8617      9269
+
+Confusion Matrix:
+        I-FaultDevice I-FaultCategory I-Description B-Description       O I-Cause I-Suggestion B-Suggestion B-Cause B-FaultCategory B-FaultDevice 
+I-FaultDevice       0       0      68       6      16      24       4       0       4       0       0 
+I-FaultCategory       0       0      48       6      17      25       5       1       3       0       0 
+I-Description       0       0    4239       4      13      23       3       2       0       0       0 
+B-Description       0       0      55     257      11      35       5       2       4       0       0 
+      O       0       0      62       2    1193      28       5       1       3       0       0 
+I-Cause       0       0      48       3       9    1911       2       2       1       0       0 
+I-Suggestion       0       0      74       5       8      20     321       1       2       0       0 
+B-Suggestion       0       0      46       2      10      20       2      54       0       0       0 
+B-Cause       0       0      54       2       7      37       4       3     220       0       0 
+B-FaultCategory       0       0      67       4      12      25       5       0       1       0       0 
+B-FaultDevice       0       0      45       8      19      26       7       1       7       0       0 
+
+进程已结束，退出代码为 0

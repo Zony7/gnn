@@ -99,7 +99,7 @@ def do_evaluate( model, testSet ):
         item_ids = testSet[:, 1]
         labels = testSet[:, 2]
         logits = model( user_ids, item_ids, True )
-        predictions = [1 if i >= 0.5 else 0 for i in logits]
+        predictions = [1 if i >= 0.2 else 0 for i in logits]
         p = precision_score(y_true = labels, y_pred = predictions)
         r = recall_score(y_true = labels, y_pred = predictions)
         acc = accuracy_score(labels, y_pred = predictions)
@@ -148,8 +148,10 @@ def train( epochs, batchSize, lr,
             optimizer.step()
             total_loss += loss.item()
         p, r, acc, f1 = do_evaluate(model,test_set) # 修改这里以接收F1值
-        print("Epoch {} | Loss {:.4f} | Precision {:.4f} | Recall {:.4f} | Accuracy {:.4f} | F1 {:.4f}"
-              .format(epoch, total_loss/(len(train_set)//batchSize), p, r, acc, f1))
+        # print("Epoch {} | Loss {:.4f} | Precision {:.4f} | Recall {:.4f} | Accuracy {:.4f} | F1 {:.4f}"
+        #       .format(epoch, total_loss/(len(train_set)//batchSize), p, r, acc, f1))
+        print("Epoch {} | Loss {:.4f} | Precision {:.4f} | Recall {:.4f} | F1 {:.4f}"
+              .format(epoch, total_loss/(len(train_set)//batchSize), p, r, f1))
     
         # 保存模型
         if epoch == epochs - 1:
@@ -167,26 +169,26 @@ if __name__ == '__main__':
         raise ValueError("训练数据集为空，请检查数据加载部分")
 
     # 训练模型
-    train( epochs = 10, batchSize = 64, lr = 0.01,
+    train( epochs = 10, batchSize = 16, lr = 1e-2,
 
            n_users = max( users ) + 1, n_entitys = max( entitys ) + 1,
            n_relations = max( relations ) + 1, adj_entity = adj_entity,
            adj_relation = adj_relation, train_set = train_set,
            test_set = test_set, n_neighbors = n_neighbors,
-           aggregator_method = 'sum', act_method = F.relu, drop_rate = 0.5, n_layers=n_layers )
+           aggregator_method = 'concat1', act_method = F.relu, drop_rate = 0.5, n_layers=n_layers )
 
 
-    # 加载训练好的模型
-    model = KGCN( n_users = max( users ) + 1, n_entitys = max( entitys ) + 1,
-                  n_relations = max( relations ) + 1, e_dim = 10,
-                  adj_entity = adj_entity, adj_relation = adj_relation,
-                  n_neighbors = n_neighbors, aggregator_method = 'sum',
-                  act_method = F.relu, drop_rate = 0.5, n_layers=n_layers )
-    model.load_state_dict(torch.load('model/KGCN_model.pth'))
-    model.eval()
-
-    # 示例预测
-    user_ids = [119, 172, 445, 13, 6, 6]  # 示例用户ID
-    item_ids = [327, 445, 456, 331, 7, 9]  # 示例物品ID
-    predictions = predict(model, user_ids, item_ids)
-    print("Predictions:", predictions)
+    # # 加载训练好的模型
+    # model = KGCN( n_users = max( users ) + 1, n_entitys = max( entitys ) + 1,
+    #               n_relations = max( relations ) + 1, e_dim = 10,
+    #               adj_entity = adj_entity, adj_relation = adj_relation,
+    #               n_neighbors = n_neighbors, aggregator_method = 'sum',
+    #               act_method = F.relu, drop_rate = 0.5, n_layers=n_layers )
+    # model.load_state_dict(torch.load('model/KGCN_model.pth'))
+    # model.eval()
+    #
+    # # 示例预测
+    # user_ids = [119, 172, 445, 13, 6, 6]  # 示例用户ID
+    # item_ids = [327, 445, 456, 331, 7, 9]  # 示例物品ID
+    # predictions = predict(model, user_ids, item_ids)
+    # print("Predictions:", predictions)

@@ -161,12 +161,13 @@ def add_alternating_rows(input_file, output_file):
 
     # 遍历每一行
     for i, row in df.iterrows():
-        if i <= 300 and i % 5 == 1 and i + 1 < len(df):
+        new_rows.append(row)
+        if i <= 300 and i % 3 == 1 and i + 1 < len(df):
             new_row = row.copy()
             new_row[2] = 1 - new_row[2]
             new_rows.append(new_row)
-        else:
-            new_rows.append(row)
+        # else:
+        #     new_rows.append(row)
 
     # 创建一个新的 DataFrame
     new_df = pd.DataFrame(new_rows)
@@ -347,7 +348,7 @@ if __name__ == "__main__":
     add_alternating_rows('data/训练集.xlsx', 'data/训练集1.xlsx')
 
     # 调用函数将xlsx文件内容重复n次
-    duplicate_xlsx_file('data/训练集1.xlsx', 'data/训练集2.xlsx', 9)
+    duplicate_xlsx_file('data/训练集1.xlsx', 'data/训练集2.xlsx', 1)
 
 
     # 打乱xlsx文件中行的顺序

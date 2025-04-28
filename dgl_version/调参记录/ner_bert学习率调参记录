@@ -1,0 +1,128 @@
+        self.max_seq_len = 64
+        self.epochs = 3
+        self.train_batch_size = 16
+        self.dev_batch_size = 16
+        self.bert_learning_rate = 1e-5
+        self.crf_learning_rate = 1e-3
+        self.adam_epsilon = 1e-8
+        self.weight_decay = 0.02
+        self.warmup_proportion = 0.1
+        self.save_step = 500
+          plt.show()
+Total training time: 94.5920958518982 seconds
+E:/lzy/BERT-BILSTM-CRF/main.py:86: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  self.model.load_state_dict(torch.load(os.path.join(self.output_dir, "pytorch_model_ner.bin")))
+100%|██████████| 19/19 [00:08<00:00,  2.25it/s]
+           precision    recall  f1-score   support
+  I-Cause     0.8814    0.9681    0.9227      4485
+B-FaultCategory     0.7959    0.1439    0.2437       271
+        O     0.9011    0.9182    0.9096      2323
+I-FaultDevice     0.9126    0.4362    0.5903       431
+B-Suggestion     0.8675    0.5232    0.6527       388
+B-Description     0.8595    0.5377    0.6615       478
+I-FaultCategory     0.8559    0.4691    0.6061       405
+I-Suggestion     0.8779    0.9573    0.9159      4117
+  B-Cause     0.8936    0.5431    0.6756       464
+I-Description     0.8832    0.9699    0.9246      5155
+B-FaultDevice     0.9383    0.2542    0.4000       299
+avg/total     0.8829    0.8833    0.8831     18816
+
+Confusion Matrix:
+        I-Cause B-FaultCategory       O I-FaultDevice B-Suggestion B-Description I-FaultCategory I-Suggestion B-Cause I-Description B-FaultDevice
+I-Cause    4342       0      24       1       4       3       5      45       1      60       0
+B-FaultCategory      55      39      24       3       4       4       5      56       3      77       1
+      O      60       0    2133       2       4       2       2      45       3      72       0
+I-FaultDevice      57       2      26     188       4       6       3      58       4      83       0
+B-Suggestion      43       2      19       4     203       2       4      56       0      54       1
+B-Description      68       3      20       1       3     257       1      56       4      64       1
+I-FaultCategory      62       0      26       0       1       6     190      61       3      56       0
+I-Suggestion      59       0      20       2       4       5       2    3941       2      82       0
+B-Cause      68       1      20       1       3       2       4      51     252      61       1
+I-Description      56       1      22       2       3       4       4      60       2    5000       1
+B-FaultDevice      56       1      33       2       1       8       2      60       8      52      76
+
+进程已结束，退出代码为 0
+
+
+
+！！！
+
+       self.max_seq_len = 64
+        self.epochs = 3
+        self.train_batch_size = 16
+        self.dev_batch_size = 16
+        self.bert_learning_rate = 5e-5
+        self.crf_learning_rate = 1e-3
+        self.adam_epsilon = 1e-8
+        self.weight_decay = 0.02
+        self.warmup_proportion = 0.1
+        self.save_step = 500
+
+           precision    recall  f1-score   support
+I-FaultDevice     0.9126    0.4362    0.5903       431
+B-Suggestion     0.8712    0.5232    0.6538       388
+I-Suggestion     0.8780    0.9575    0.9160      4117
+B-Description     0.8595    0.5377    0.6615       478
+  B-Cause     0.8936    0.5431    0.6756       464
+        O     0.9011    0.9182    0.9096      2323
+I-Description     0.8832    0.9699    0.9246      5155
+B-FaultCategory     0.7843    0.1476    0.2484       271
+I-FaultCategory     0.8636    0.4691    0.6080       405
+  I-Cause     0.8814    0.9681    0.9227      4485
+B-FaultDevice     0.9383    0.2542    0.4000       299
+avg/total     0.8830    0.8835    0.8832     18816
+
+！！！
+
+       self.max_seq_len = 64
+        self.epochs = 3
+        self.train_batch_size = 16
+        self.dev_batch_size = 16
+        self.bert_learning_rate = 1e-4
+        self.crf_learning_rate = 1e-3
+        self.adam_epsilon = 1e-8
+        self.weight_decay = 0.02
+        self.warmup_proportion = 0.1
+        self.save_step = 500
+
+           precision    recall  f1-score   support
+B-FaultCategory     0.7843    0.1476    0.2484       271
+  I-Cause     0.8814    0.9681    0.9227      4485
+        O     0.8977    0.9182    0.9079      2323
+  B-Cause     0.8936    0.5431    0.6756       464
+I-FaultCategory     0.8636    0.4691    0.6080       405
+I-FaultDevice     0.9126    0.4362    0.5903       431
+I-Suggestion     0.8778    0.9560    0.9152      4117
+B-Description     0.8595    0.5377    0.6615       478
+B-Suggestion     0.8675    0.5232    0.6527       388
+I-Description     0.8832    0.9692    0.9242      5155
+B-FaultDevice     0.9383    0.2542    0.4000       299
+avg/total     0.8824    0.8829    0.8827     18816
+
+
+
+！！！
+        self.max_seq_len = 64
+        self.epochs = 3
+        self.train_batch_size = 16
+        self.dev_batch_size = 16
+        self.bert_learning_rate = 5e-5
+        self.crf_learning_rate = 1e-3
+        self.adam_epsilon = 1e-8
+        self.weight_decay = 0.02
+        self.warmup_proportion = 0.1
+        self.save_step = 500
+
+                   precision    recall  f1-score   support
+B-FaultDevice     0.0000    0.0000    0.0000       299
+I-Suggestion     0.4253    0.7396    0.5401      4117
+  B-Cause     0.0000    0.0000    0.0000       464
+B-Description     0.8595    0.5377    0.6615       478
+B-Suggestion     0.0000    0.0000    0.0000       388
+        O     1.0000    0.1270    0.2254      2323
+  I-Cause     0.4323    0.4611    0.4462      4485
+B-FaultCategory     0.0000    0.0000    0.0000       271
+I-FaultDevice     0.0000    0.0000    0.0000       431
+I-FaultCategory     0.0000    0.0000    0.0000       405
+I-Description     0.6163    0.7507    0.6769      5155
+avg/total     0.5103    0.5067    0.5085     18816

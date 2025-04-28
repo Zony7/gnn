@@ -1,0 +1,108 @@
+        self.max_seq_len = 64
+        self.epochs = 3
+        self.train_batch_size = 16
+        self.dev_batch_size = 16
+        self.bert_learning_rate = 5e-5
+        self.crf_learning_rate = 5e-4
+        self.adam_epsilon = 1e-8
+        self.weight_decay = 0.02
+        self.warmup_proportion = 0.1
+        self.save_step = 500
+
+                   precision    recall  f1-score   support
+I-Suggestion     0.8780    0.9575    0.9160      4117
+  B-Cause     0.8936    0.5431    0.6756       464
+  I-Cause     0.8814    0.9681    0.9227      4485
+I-FaultDevice     0.9126    0.4362    0.5903       431
+I-Description     0.8832    0.9699    0.9246      5155
+B-FaultCategory     0.7843    0.1476    0.2484       271
+        O     0.9011    0.9182    0.9096      2323
+B-FaultDevice     0.9383    0.2542    0.4000       299
+B-Description     0.8595    0.5377    0.6615       478
+B-Suggestion     0.8712    0.5232    0.6538       388
+I-FaultCategory     0.8636    0.4691    0.6080       405
+avg/total     0.8830    0.8835    0.8832     18816
+
+
+
+!!!
+        self.max_seq_len = 64
+        self.epochs = 3
+        self.train_batch_size = 16
+        self.dev_batch_size = 16
+        self.bert_learning_rate = 5e-5
+        self.crf_learning_rate = 5e-3
+        self.adam_epsilon = 1e-8
+        self.weight_decay = 0.02
+        self.warmup_proportion = 0.1
+        self.save_step = 500
+
+                   precision    recall  f1-score   support
+I-FaultDevice     0.9126    0.4362    0.5903       431
+B-FaultDevice     0.9383    0.2542    0.4000       299
+B-FaultCategory     0.7843    0.1476    0.2484       271
+I-Suggestion     0.8780    0.9575    0.9160      4117
+I-Description     0.8832    0.9699    0.9246      5155
+  B-Cause     0.8905    0.5431    0.6747       464
+        O     0.9011    0.9182    0.9096      2323
+B-Description     0.8595    0.5377    0.6615       478
+B-Suggestion     0.8712    0.5232    0.6538       388
+I-FaultCategory     0.8636    0.4691    0.6080       405
+  I-Cause     0.8814    0.9679    0.9226      4485
+avg/total     0.8829    0.8834    0.8831     18816
+
+
+
+!!!
+        self.max_seq_len = 64
+        self.epochs = 3
+        self.train_batch_size = 16
+        self.dev_batch_size = 16
+        self.bert_learning_rate = 5e-5
+        self.crf_learning_rate = 1e-2
+        self.adam_epsilon = 1e-8
+        self.weight_decay = 0.02
+        self.warmup_proportion = 0.1
+        self.save_step = 500
+
+                   precision    recall  f1-score   support
+B-Suggestion     0.8675    0.5232    0.6527       388
+  B-Cause     0.8936    0.5431    0.6756       464
+B-FaultDevice     0.9383    0.2542    0.4000       299
+  I-Cause     0.8814    0.9681    0.9227      4485
+I-Description     0.8832    0.9699    0.9246      5155
+I-FaultDevice     0.9126    0.4362    0.5903       431
+B-FaultCategory     0.7843    0.1476    0.2484       271
+I-Suggestion     0.8779    0.9573    0.9159      4117
+        O     0.9011    0.9182    0.9096      2323
+I-FaultCategory     0.8636    0.4691    0.6080       405
+B-Description     0.8595    0.5377    0.6615       478
+avg/total     0.8829    0.8834    0.8831     18816
+
+
+
+
+        self.max_seq_len = 64
+        self.epochs = 3
+        self.train_batch_size = 16
+        self.dev_batch_size = 16
+        self.bert_learning_rate = 5e-5
+        self.crf_learning_rate = 1e-1
+        self.adam_epsilon = 1e-8
+        self.weight_decay = 0.02
+        self.warmup_proportion = 0.1
+        self.save_step = 500
+
+                   precision    recall  f1-score   support
+B-FaultCategory     0.0000    0.0000    0.0000       271
+  B-Cause     0.8125    0.5323    0.6432       464
+I-Description     0.8732    0.9081    0.8903      5155
+I-FaultCategory     0.3924    0.0765    0.1281       405
+B-Description     0.8421    0.5356    0.6547       478
+I-Suggestion     0.8553    0.8642    0.8597      4117
+        O     0.8836    0.9152    0.8991      2323
+B-Suggestion     0.8551    0.4562    0.5950       388
+B-FaultDevice     0.6000    0.2107    0.3119       299
+I-FaultDevice     0.4371    0.3550    0.3918       431
+  I-Cause     0.7581    0.9365    0.8379      4485
+avg/total     0.8032    0.8233    0.8132     18816
